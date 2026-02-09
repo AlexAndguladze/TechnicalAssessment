@@ -3,7 +3,7 @@
   "Transform": "AWS::Serverless-2016-10-31",
   "Description": "An AWS Serverless Application. This template is partially managed by Amazon.Lambda.Annotations (v1.8.0.0).",
   "Resources": {
-    "TechnicalAssessmentFunctionsGetGenerated": {
+    "TechnicalAssessmentFunctionsGeocodeGenerated": {
       "Type": "AWS::Serverless::Function",
       "Metadata": {
         "Tool": "Amazon.Lambda.Annotations",
@@ -18,10 +18,6 @@
         }
       },
       "Properties": {
-        "Architectures": [
-          "x86_64"
-        ],
-        "Handler": "TechnicalAssessment::TechnicalAssessment.Functions_Get_Generated::Get",
         "Runtime": "dotnet6",
         "CodeUri": ".",
         "MemorySize": 512,
@@ -30,11 +26,12 @@
           "AWSLambdaBasicExecutionRole"
         ],
         "PackageType": "Zip",
+        "Handler": "TechnicalAssessment::TechnicalAssessment.Functions_Geocode_Generated::Geocode",
         "Events": {
           "RootGet": {
             "Type": "Api",
             "Properties": {
-              "Path": "/",
+              "Path": "/Geocode",
               "Method": "GET"
             }
           }
